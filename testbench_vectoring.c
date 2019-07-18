@@ -11,8 +11,7 @@ int main(void){
 
 	x_d = 0.82;
 	y_d = 0.0;
-	//z_d = atan(y_d / x_d);
-	z_d = atan(x_d);
+	z_d = atan(y_d / x_d);
 
 	x_i = (int) (x_d * (1 << 15));
 	y_i = (int) (y_d * (1 << 15));

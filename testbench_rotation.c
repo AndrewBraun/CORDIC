@@ -19,7 +19,7 @@ int main(void){
 	printf("z_d = %f\t\t\tz_i = %i\n", z_d, z_i);
 
 	x_n_d = x_d * cos(z_d) - y_d * sin(z_d);
-	y_n_d = y_d * cos(z_d) + x_d * sin(z_d);
+	y_n_d = x_d * sin(z_d) + y_d * cos(z_d);
 
 	x_n_i = (int) (x_n_d * (1 << 15));
 	y_n_i = (int) (y_n_d * (1 << 15));
