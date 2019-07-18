@@ -9,9 +9,10 @@ int main(void){
 	double x_d, y_d, z_d;
 	int x_i, y_i, z_i;
 
-	x_d = 0.85;
-	y_d = 0.76;
-	z_d = atan(y_d / x_d);
+	x_d = 0.82;
+	y_d = 0.0;
+	//z_d = atan(y_d / x_d);
+	z_d = atan(x_d);
 
 	x_i = (int) (x_d * (1 << 15));
 	y_i = (int) (y_d * (1 << 15));
