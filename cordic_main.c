@@ -17,11 +17,11 @@ typedef enum {V, R} Mode;
 int main( void) {
 	int x_i_init, y_i_init, z_i_init;
 	int x_i, y_i, z_i;
-	Mode curMode = V;
+	Mode curMode = R;
 
-	x_i = ( x_i_init = 27852);
-	y_i = ( y_i_init = 24903);
-	z_i_init = 0;
+	x_i = ( x_i_init = 32768);
+	y_i = ( y_i_init = 0);
+	z_i_init = 14745;
 
 	if ( curMode == V) {
 		cordic_V_fixed_point( &x_i, &y_i, &z_i);

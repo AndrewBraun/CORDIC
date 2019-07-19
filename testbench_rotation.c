@@ -6,9 +6,9 @@ int main(void){
 	double x_d, y_d, z_d, x_n_d, y_n_d;
 	int x_i, y_i, z_i, x_n_i, y_n_i;
 
-	x_d = 0.49;
-	y_d = 0.16;
-	z_d = 1.02;
+	x_d = 1.0;
+	y_d = 0.0;
+	z_d = 1.1;
 
 	x_i = (int) (x_d * (1 << 15));
 	y_i = (int) (y_d * (1 << 15));
@@ -26,4 +26,20 @@ int main(void){
 
 	printf("x'd = %f\t\t\tx'i = %i\n", x_n_d, x_n_i);
 	printf("y'd = %f\t\t\ty'i = %i\n", y_n_d, y_n_i);
+
+	double gain_d = 1;
+	for (int i = 0; i < 15; i++){
+		gain_d = gain_d * sqrt(1 + pow(2, -2*i));
+	}
+	int gain_i = (int) (gain_d * (1 << 15));
+
+	printf("\ngain_d = %f\t\t\tgain_i = %i\n", gain_d, gain_i);
+	
+	x_n_d = x_n_d * gain_d;
+	y_n_d = y_n_d * gain_d;
+	x_n_i = (int) (x_n_d * (1 << 15));
+	y_n_i = (int) (y_n_d * (1 << 15));
+
+	printf("x'd = %f\t\t\tx'i = %i\n", x_n_d, x_n_i);
+	printf("y'd = %f\t\t\ty'i = %i\n", y_n_d, y_n_i);	 
 }
