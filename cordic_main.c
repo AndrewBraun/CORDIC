@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <math.h>
-#include "cordic.h"
+#include "cordic_R.h"
+#include "cordic_V.h"
+
+int z_table[15] = { 25735, 15192, 8027, 4074, 2045,
+	1023, 511, 255, 127, 63, 31, 15, 7, 3, 1};
 
 void verify_V( int x_i_init, int y_i_init, int z_i_init,
 			int x_i, int y_i, int z_i){
@@ -17,9 +21,9 @@ void verify_V( int x_i_init, int y_i_init, int z_i_init,
 
 	printf( "Vectoring Mode\n\n");
 
-	printf("x_i_init = %5i\t\tx_d_init = %f\n", x_i_init, x_d_init);
-	printf("y_i_init = %5i\t\ty_d_init = %f\n", y_i_init, y_d_init);
-	printf("z_i_init = %5i\t\tz_d_init = %f\n", z_i_init, z_d_init);
+	printf("x_i_init = %5i\tx_d_init = %f\n", x_i_init, x_d_init);
+	printf("y_i_init = %5i\ty_d_init = %f\n", y_i_init, y_d_init);
+	printf("z_i_init = %5i\tz_d_init = %f\n", z_i_init, z_d_init);
 
 	printf("x_i = %5i\t\tx_d = %f\n", x_i, x_d);
 	printf("y_i = %5i\t\ty_d = %f\n", y_i, y_d);
@@ -41,9 +45,9 @@ void verify_R( int x_i_init, int y_i_init, int z_i_init,
 
 	printf( "Rotation Mode\n\n");
 
-	printf("x_i_init = %5i\t\tx_d_init = %f\n", x_i_init, x_d_init);
-	printf("y_i_init = %5i\t\ty_d_init = %f\n", y_i_init, y_d_init);
-	printf("z_i_init = %5i\t\tz_d_init = %f\n", z_i_init, z_d_init);
+	printf("x_i_init = %5i\tx_d_init = %f\n", x_i_init, x_d_init);
+	printf("y_i_init = %5i\ty_d_init = %f\n", y_i_init, y_d_init);
+	printf("z_i_init = %5i\tz_d_init = %f\n", z_i_init, z_d_init);
 
 	printf("x_i = %5i\t\tx_d = %f\n", x_i, x_d);
 	printf("y_i = %5i\t\ty_d = %f\n", y_i, y_d);
