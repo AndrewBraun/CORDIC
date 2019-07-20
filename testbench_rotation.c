@@ -8,7 +8,7 @@ int main(void){
 
 	x_d = 1.0;
 	y_d = 0.0;
-	z_d = 1.1;
+	z_d = 0.45;
 
 	x_i = (int) (x_d * (1 << 15));
 	y_i = (int) (y_d * (1 << 15));
@@ -33,7 +33,7 @@ int main(void){
 	}
 	int gain_i = (int) (gain_d * (1 << 15));
 
-	printf("\ngain_d = %f\t\t\tgain_i = %i\n", gain_d, gain_i);
+	printf("\ngain_d = %f\t\tgain_i = %i\n", gain_d, gain_i);
 	
 	x_n_d = x_n_d * gain_d;
 	y_n_d = y_n_d * gain_d;

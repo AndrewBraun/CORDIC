@@ -21,7 +21,7 @@ int main( void) {
 
 	x_i = ( x_i_init = 32768);
 	y_i = ( y_i_init = 0);
-	z_i_init = 14745;
+	z_i = (z_i_init = 14745);
 
 	if ( curMode == V) {
 		cordic_V_fixed_point( &x_i, &y_i, &z_i);
@@ -79,6 +79,9 @@ void verify_R( int x_i_init, int y_i_init, int z_i_init,
 	printf("x_i = %5i\t\tx_d = %f\n", x_i, x_d);
 	printf("y_i = %5i\t\ty_d = %f\n", y_i, y_d);
 	printf("z_i = %5i\t\tz_d = %f\n", z_i, z_d);
+
+	printf("X = %f\n", (double)x_i / (1 << 15));
+	printf("Y = %f\n", (double)y_i / (1 << 15));
 }
 
 
