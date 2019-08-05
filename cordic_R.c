@@ -4,16 +4,21 @@ int z_table[15];
 
 #pragma ATOMIC
 void cordic_R_fixed_point( int * restrict x, int * restrict y, int * restrict z) {
-	register int x_temp_1, y_temp_1, z_temp;
-	register int x_temp_2, y_temp_2;
+	register int x_temp_1, y_temp_1, z_temp_1;
+	register int x_temp_2, y_temp_2, z_temp_2;
 	register int i;
 
 	x_temp_1 = *x;
 	y_temp_1 = *y;
-	z_temp = *z;
+	z_temp_1 = *z;
 
 	for ( i = 0; i < 15; i++) {
 
+		z_temp_2 = (z_temp_1 < 0) ? (z_temp_1 + z_table[i]) : (z_temp_1 - z_table[i]);
+		x_temp_2 = (z_temp_1 < 0) ? (x_temp_1 + (y_temp_1 >> i)) : (x_temp_1 - (y_temp_1 >> i));
+		y_temp_2 = (z_temp_1 < 0) ? (y_temp_1 - (x_temp_1 >> i)) : (y_temp_1 + (x_temp_1 >> i));
+
+		/*
 		if ( z_temp < 0) { // direction = -1
 
 			z_temp += z_table[i];
@@ -25,10 +30,15 @@ void cordic_R_fixed_point( int * restrict x, int * restrict y, int * restrict z)
 			z_temp -= z_table[i];
 			x_temp_2 = x_temp_1 - (y_temp_1 >> i);
 			y_temp_2 = y_temp_1 + (x_temp_1 >> i);
-		}
+		} */
 
 		i++;
 
+		z_temp_1 = (z_temp_2 < 0) ? (z_temp_2 + z_table[i]) : (z_temp_2 - z_table[i]);
+		x_temp_1 = (z_temp_2 < 0) ? (x_temp_2 + (y_temp_2 >> i)) : (x_temp_2 - (y_temp_2 >> i));
+		y_temp_1 = (z_temp_2 < 0) ? (y_temp_2 - (x_temp_2 >> i)) : (y_temp_2 + (x_temp_2 >> i));
+
+		/*
 		if ( z_temp < 0) { // direction = -1
 
 			z_temp += z_table[i];
@@ -40,7 +50,7 @@ void cordic_R_fixed_point( int * restrict x, int * restrict y, int * restrict z)
 			z_temp -= z_table[i];
 			x_temp_1 = x_temp_2 - (y_temp_2 >> i);
 			y_temp_1 = y_temp_2 + (x_temp_2 >> i);
-		}
+		} */
 
 		//x_temp_1 = x_temp_2;
 		//y_temp_1 = y_temp_2;
@@ -48,5 +58,5 @@ void cordic_R_fixed_point( int * restrict x, int * restrict y, int * restrict z)
 
 	*x = x_temp_1;
 	*y = y_temp_1;
-	*z = z_temp;
+	*z = z_temp_1;
 }
