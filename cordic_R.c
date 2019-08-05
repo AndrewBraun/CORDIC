@@ -27,8 +27,23 @@ void cordic_R_fixed_point( int * restrict x, int * restrict y, int * restrict z)
 			z_temp -= z_table[i];
 		}
 
-		x_temp_1 = x_temp_2;
-		y_temp_1 = y_temp_2;
+		i++;
+
+		if ( z_temp < 0) { // direction = -1
+
+			x_temp_1 = x_temp_2 + (y_temp_2 >> i);
+			y_temp_1 = y_temp_2 - (x_temp_2 >> i);
+			z_temp += z_table[i];
+		}
+		else { // direction = 1
+
+			x_temp_1 = x_temp_2 - (y_temp_2 >> i);
+			y_temp_1 = y_temp_2 + (x_temp_2 >> i);
+			z_temp -= z_table[i];
+		}
+
+		//x_temp_1 = x_temp_2;
+		//y_temp_1 = y_temp_2;
 	}
 
 	*x = x_temp_1;
