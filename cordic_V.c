@@ -36,7 +36,7 @@ void cordic_V_fixed_point( int * restrict x, int * restrict y, int * restrict z)
 
 		y_temp_1 = (y_temp_2 >= 0) ? (y_temp_2 - (x_temp_2 >> i)) : (y_temp_2 + (x_temp_2 >> i));
 		x_temp_1 = (y_temp_2 >= 0) ? (x_temp_2 + (y_temp_2 >> i)) : (x_temp_2 - (y_temp_2 >> i));
-		z_temp = (y_temp_1 >= 0) ? (z_temp + z_table[i]) : (z_temp - z_table[i]);
+		z_temp = (y_temp_2 >= 0) ? (z_temp + z_table[i]) : (z_temp - z_table[i]);
 		/*
 		if ( y_temp_2 >= 0) { // direction = -1
 
