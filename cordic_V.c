@@ -12,7 +12,7 @@ void cordic_V_fixed_point( int * restrict x, int * restrict y, int * restrict z)
 	y_temp_1 = *y;
 	z_temp = 0;
 
-	for ( i = 0; i < 15; i++) {
+	for ( i = 0; i < 14; i++) {
 
 		if ( y_temp_1 >= 0) { // direction = -1
 
