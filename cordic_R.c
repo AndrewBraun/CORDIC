@@ -4,13 +4,13 @@ int z_table[15];
 
 #pragma ATOMIC
 void cordic_R_fixed_point( int * restrict x, int * restrict y, int * restrict z) {
-	register int x_temp_1, y_temp_1, z_temp_1;
-	register int x_temp_2, y_temp_2, z_temp_2;
+	register int x_temp_1, y_temp_1, z_temp;
+	register int x_temp_2, y_temp_2;
 	register int i;
 
 	x_temp_1 = *x;
 	y_temp_1 = *y;
-	z_temp_1 = *z;
+	z_temp = *z;
 
 	for ( i = 0; i < 15; i++) {
 
@@ -48,5 +48,5 @@ void cordic_R_fixed_point( int * restrict x, int * restrict y, int * restrict z)
 
 	*x = x_temp_1;
 	*y = y_temp_1;
-	*z = z_temp_1;
+	*z = z_temp;
 }
