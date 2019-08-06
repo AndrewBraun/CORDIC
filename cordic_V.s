@@ -141,44 +141,34 @@ cordic_V_fixed_point:
 	addlt	r3, r3, r7
 	addge	lr, lr, r6
 	sublt	lr, lr, r6
-	asr	r7, lr, #12
-	asr	r6, r3, #12
+	asr	r7, r3, #12
 	addge	r4, r4, r5
 	sublt	r4, r4, r5
+	ldr	r6, [ip, #48]
 	cmp	r3, #0
-	ldr	r5, [ip, #48]
-	subge	r3, r3, r7
-	addlt	r3, r3, r7
-	addge	lr, lr, r6
-	sublt	lr, lr, r6
-	asr	r7, lr, #13
-	asr	r6, r3, #13
-	addge	r4, r4, r5
-	sublt	r4, r4, r5
-	cmp	r3, #0
-	ldr	r5, [ip, #52]
-	subge	r3, r3, r7
-	addge	lr, lr, r6
-	addlt	r3, r3, r7
-	sublt	lr, lr, r6
-	asr	r7, r3, #14
-	addge	r4, r4, r5
-	sublt	r4, r4, r5
-	ldr	r6, [ip, #56]
-	cmp	r3, #0
-	asr	r5, lr, #14
-	ldr	ip, [ip, #60]
+	asr	r5, lr, #12
 	subge	r3, r3, r5
-	addge	lr, r7, lr
 	addlt	r3, r5, r3
+	addge	lr, r7, lr
 	sublt	lr, lr, r7
-	asr	r5, r3, #15
+	asr	r7, lr, #13
 	addge	r4, r6, r4
 	sublt	r4, r4, r6
+	ldr	r5, [ip, #52]
 	cmp	r3, #0
-	asr	r6, lr, #15
-	subge	r3, r3, r6
+	asr	r6, r3, #13
+	addge	lr, lr, r6
+	subge	r3, r3, r7
+	addlt	r3, r3, r7
+	sublt	lr, lr, r6
+	ldr	ip, [ip, #56]
+	asr	r6, lr, #14
+	addge	r4, r5, r4
+	sublt	r4, r4, r5
+	cmp	r3, #0
+	asr	r5, r3, #14
 	addge	lr, lr, r5
+	subge	r3, r3, r6
 	addge	ip, r4, ip
 	addlt	r3, r3, r6
 	sublt	lr, lr, r5
